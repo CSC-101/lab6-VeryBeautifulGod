@@ -1,4 +1,4 @@
-import data
+from data import Book
 import lab6
 import unittest
 
@@ -64,16 +64,78 @@ class TestCases(unittest.TestCase):
 
 
     # Part 1
+    def test_selection_sort_books_case_1(self):
+        books = [
+            Book(["Author A"], "Zebra"),
+            Book(["Author B"], "Apple"),
+            Book(["Author C"], "Mango"),
+            Book(["Author D"], "Banana")
+        ]
+        expected = [
+            Book(["Author B"], "Apple"),
+            Book(["Author D"], "Banana"),
+            Book(["Author C"], "Mango"),
+            Book(["Author A"], "Zebra")
+        ]
+        lab6.selection_sort_books(books)
+        self.assertEqual(books, expected)
 
+    def test_selection_sort_books_case_2(self):
+        books = [
+            Book(["Author A"], "C"),
+            Book(["Author B"], "B"),
+            Book(["Author C"], "A")
+        ]
+        expected = [
+            Book(["Author C"], "A"),
+            Book(["Author B"], "B"),
+            Book(["Author A"], "C")
+        ]
+        lab6.selection_sort_books(books)
+        self.assertEqual(books, expected)
 
     # Part 2
+    def test_swap_case_1(self):
+        input_str = "Hello World!"
+        expected = "hELLO wORLD!"
+        actual = lab6.swap_case(input_str)
+        self.assertEqual(expected, actual)
 
+    def test_swap_case_2(self):
+        input_str = "Python 3.8 is Fun!"
+        expected = "pYTHON 3.8 IS fUN!"
+        actual = lab6.swap_case(input_str)
+        self.assertEqual(expected, actual)
 
     # Part 3
+    def test_str_translate_1(self):
+        input_str = 'abcdcba'
+        old_char = 'a'
+        new_char = 'x'
+        expected = 'xbcdcbx'
+        actual = lab6.str_translate(input_str, old_char, new_char)
+        self.assertEqual(expected, actual)
 
+    def test_str_translate_2(self):
+        input_str = 'hello world'
+        old_char = 'o'
+        new_char = '0'
+        expected = 'hell0 w0rld'
+        actual = lab6.str_translate(input_str, old_char, new_char)
+        self.assertEqual(expected, actual)
 
     # Part 4
+    def test_histogram_1(self):
+        input_str = "hello world hello"
+        expected = {'hello': 2, 'world': 1}
+        actual = lab6.histogram(input_str)
+        self.assertEqual(expected, actual)
 
+    def test_histogram_2(self):
+        input_str = "this is a test this is only a test"
+        expected = {'this': 2, 'is': 2, 'a': 2, 'test': 2, 'only': 1}
+        actual = lab6.histogram(input_str)
+        self.assertEqual(expected, actual)
 
 
 
